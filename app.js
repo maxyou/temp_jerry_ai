@@ -65,7 +65,7 @@ module.exports = class RangeList {
                 // console.log('push old-2:' + this.rangeList[i])
             }
         }
-        
+
         if (!merged) { //new range beyond all old range, so no chance import before
             rangeListNew.push(range)
             merged = true
@@ -125,8 +125,9 @@ module.exports = class RangeList {
         // console.log('print()')
         var output = ''
         for (var i = 0; i < this.rangeList.length; i++) {
-            output = output.concat(`[${this.rangeList[i][0]},${this.rangeList[i][1]}) `)
+            output = output.concat(`[${this.rangeList[i][0]}, ${this.rangeList[i][1]}) `)
         }
         console.log(output)
+        return output
     }
 }
