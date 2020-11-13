@@ -30,6 +30,7 @@ test('object assignment', () => {
 
     data.remove([15, 17])
     expect(data).toEqual({rangeList:[[1, 8], [11, 15], [17,21]]})
+    data.print()
 
     data.remove([3, 19])
     expect(data).toEqual({rangeList:[[1, 3], [19,21]]})
