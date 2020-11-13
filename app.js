@@ -98,11 +98,46 @@ class rangeList {
     */
     remove(range) {
         // TODO: implement this
+        if(range[1]<=range[0]){
+            return
+        }
+        /**
+         * if old range is outside hole, import it
+         * if old range is inside hole, bypass it
+         * if old range cover hole, break up it, and import left two part
+         * if part of old range is inside hole, cut it and import left
+         */
+        let rangeListNew = []
+        // console.log('extended range:' + range + '--------1')
+        for (var i = 0; i < this.rangeList.length; i++) {
+            console.log('extended range:' + range + '--------for----1----i:' + i)
 
+            
+            if (this.rangeList[i][1] <= range[0] || this.rangeList[i][0] >= range[1]) {
+                //if old range is outside hole, import it
+                rangeListNew.push(this.rangeList[i])
+                console.log('push old-1:' + this.rangeList[i])                
+            }else if (this.rangeList[i][0] >= range[0] && this.rangeList[i][1] <= range[1]) {
+                //if old range is inside hole, bypass it
 
-        
+            } else if(this.rangeList[i][0] < range[0] && this.rangeList[i][1] > range[1]){
+                //if old range cover hole, break up it, and import left two part
+                rangeListNew.push([this.rangeList[i][0], range[0]])
+                rangeListNew.push([range[1], this.rangeList[i][1]])
+                console.log('push old-2:' + this.rangeList[i])
+            
+            } else if(this.rangeList[i][0] > range[0]){
+                //cut first half part
+                rangeListNew.push([range[1], this.rangeList[i][1]])
+            } else if(this.rangeList[i][1] < range[1]){
+                rangeListNew.push([this.rangeList[i][0], range[0]])
+            }else{
+                console.log('should not be here')
+            }
+        }
 
-
+        this.rangeList = rangeListNew
+        console.log('============new range list:' + JSON.stringify(rangeListNew))
     }
     /**
     * Prints out the list of ranges in the range list
@@ -115,9 +150,15 @@ class rangeList {
 }
 console.log('run....')
 var t = new rangeList()
-t.add([15, 20])
-t.add([21, 21])
-t.add([13, 14])
+t.add([10, 50])
+t.remove([21, 21])
+t.remove([2, 15])
+t.remove([45, 55])
+t.remove([20, 25])
+t.remove([10, 22])
+
+
+// t.add([13, 14])
 // t.add([5, 8])
 // t.add([20, 23])
 // t.add([4, 6])
