@@ -144,8 +144,14 @@ class rangeList {
     */
     print() {
         // TODO: implement this
+        console.log('print()')
+        var output = ''
+        for (var i = 0; i < this.rangeList.length; i++) {
+            
+            output = output.concat(`[${this.rangeList[i][0]},${this.rangeList[i][1]}) `)
 
-
+        }
+        console.log(output)
     }
 }
 console.log('run....')
@@ -155,7 +161,8 @@ t.remove([21, 21])
 t.remove([2, 15])
 t.remove([45, 55])
 t.remove([20, 25])
-t.remove([10, 22])
+// t.remove([10, 22])
+t.print()
 
 
 // t.add([13, 14])
