@@ -1,5 +1,4 @@
-
-class rangeList {
+export default class RangeList {
     constructor() {
         this.rangeList = [];
       }
@@ -154,15 +153,15 @@ class rangeList {
         console.log(output)
     }
 }
-console.log('run....')
-var t = new rangeList()
-t.add([10, 50])
-t.remove([21, 21])
-t.remove([2, 15])
-t.remove([45, 55])
-t.remove([20, 25])
-// t.remove([10, 22])
-t.print()
+// console.log('run....')
+// var t = new rangeList()
+// t.add([10, 50])
+// t.remove([21, 21])
+// t.remove([2, 15])
+// t.remove([45, 55])
+// t.remove([20, 25])
+// // t.remove([10, 22])
+// t.print()
 
 
 // t.add([13, 14])
